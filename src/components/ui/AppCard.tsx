@@ -8,7 +8,7 @@ type AppCardProps = {
 export function AppCard({ children, className = "" }: AppCardProps) {
   return (
     <div
-      className={`card rounded-[28px] border border-[#eadcf2] bg-white/75 shadow-[0_18px_60px_rgba(75,45,95,0.10)] backdrop-blur-xl ${className}`}
+      className={`card rounded-2xl border border-[#eadcf2] ${className}`}
     >
       {children}
     </div>
