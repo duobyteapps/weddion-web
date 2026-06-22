@@ -1,6 +1,13 @@
 import { CalendarHeart, Heart, UsersRound } from "lucide-react";
 import { AppContainer } from "@/components/ui/AppContainer";
+import {
+  AppFeatureItem,
+  AppFeatureItemGrid,
+} from "@/components/common/AppFeatureItem";
+import { AppText } from "@/components/ui/AppText";
 import type { HomeFeatureItem } from "../types/home.types";
+import { AppCard } from "@/components/ui/AppCard";
+import purpleHeartDivider from "@/assets/images/purple-heart-divider.png";
 
 const features: HomeFeatureItem[] = [
   {
@@ -25,40 +32,39 @@ const features: HomeFeatureItem[] = [
 
 export function HomeFeatureStrip() {
   return (
-    <section className="relative z-10 pb-16 pt-10">
-      <AppContainer>
-        <div className="rounded-[28px] border border-[#eadcf2] bg-white/70 px-8 py-7 shadow-[0_18px_60px_rgba(75,45,95,0.08)] backdrop-blur-xl">
-          <div className="grid gap-8 lg:grid-cols-3">
-            {features.map((feature, index) => {
-              const Icon = feature.icon;
+    <AppContainer>
+      <AppCard className="shadow-cardSoft">
+        <AppFeatureItemGrid>
+          {features.map((feature) => (
+            <AppFeatureItem
+              key={feature.title}
+              title={feature.title}
+              description={feature.description}
+              icon={feature.icon}
+              iconSize={28}
+              className="py-5 md:px-6 md:py-2 first:md:pl-0 last:md:pr-0"
+            />
+          ))}
+        </AppFeatureItemGrid>
+      </AppCard>
 
-              return (
-                <div
-                  key={feature.title}
-                  className="flex gap-7 lg:border-r lg:border-[#d8bee9] lg:pr-8 last:lg:border-r-0"
-                >
-                  <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl bg-[#f4eafa] text-[#8f58c9]">
-                    <Icon size={38} />
-                  </div>
-
-                  <div>
-                    <h3 className="weddion-serif text-2xl font-bold text-[#2d2138]">
-                      {feature.title}
-                    </h3>
-                    <p className="mt-3 text-[15px] leading-7 text-[#6c6275]">
-                      {feature.description}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        <p className="weddion-serif mt-7 text-center text-2xl text-[#9b62d0]">
+      <div className="mt-7 text-center">
+        <AppText
+          as="p"
+          variant="serifSubtitle"
+          className="!text-[24px] leading-tight !text-primaryDark"
+        >
           Weddion ile davetiyeler artık daha romantik ve modern.
-        </p>
-      </AppContainer>
-    </section>
+        </AppText>
+
+        <div className="mt-4 flex justify-center">
+          <img
+            src={purpleHeartDivider}
+            alt=""
+            className="h-8 w-auto object-contain opacity-80"
+          />
+        </div>
+      </div>
+    </AppContainer>
   );
 }

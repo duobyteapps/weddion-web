@@ -7,7 +7,9 @@ type AppContainerProps = {
 
 export function AppContainer({ children, className = "" }: AppContainerProps) {
   return (
-    <div className={`mx-auto w-full max-w-[1480px] px-6 lg:px-10 ${className}`}>
+    <div
+      className={`mx-auto w-full max-w-[1480px] my-8 px-5 sm:px-8 lg:px-10 ${className}`}
+    >
       {children}
     </div>
   );

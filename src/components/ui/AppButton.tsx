@@ -14,14 +14,14 @@ export function AppButton({
   ...props
 }: AppButtonProps) {
   const baseClass =
-    "btn min-h-0 h-12 rounded-xl px-8 text-[15px] font-semibold shadow-none";
+    "btn min-h-0 !h-10 rounded-lg px-4 text-xs font-semibold shadow-none transition-all duration-300 ease-out";
 
   const variantClass =
     variant === "primary"
-      ? "border-none bg-gradient-to-r from-[#9b62d0] to-[#8b4fc2] text-white hover:from-[#8f58c9] hover:to-[#7b43b5]"
+      ? "border-none bg-gradient-to-r from-primary to-primaryDark text-white"
       : variant === "outline"
-        ? "border-[#b78bd5] bg-white/40 text-[#4d3f58] hover:border-[#9d6fc8] hover:bg-[#f5ecfb]"
-        : "border-none bg-transparent text-[#6a527a] hover:bg-[#f3e8fb]";
+        ? "border border-primaryDark/50 bg-white/50 text-textDark hover:border-primaryDark hover:bg-primarySoft"
+        : "border border-primaryDark bg-transparent text-primaryDark hover:bg-primarySoft";
 
   return (
     <button className={`${baseClass} ${variantClass} ${className}`} {...props}>
