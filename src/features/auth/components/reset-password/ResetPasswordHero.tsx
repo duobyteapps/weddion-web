@@ -1,10 +1,10 @@
 import { AuthHero } from "@/features/auth/components/AuthHero";
 
-export function ForgotPasswordHero() {
+export function ResetPasswordHero() {
   return (
     <AuthHero
-      title={"Şifrenizi\nkolayca yenileyin"}
-      description="E-posta adresinizi girin, şifrenizi yenilemeniz için gerekli adımları size gönderelim."
+      title={"Yeni şifrenizi\nbelirleyin"}
+      description="Hesabınız için güçlü ve güvenli yeni bir şifre oluşturun."
     />
   );
 }
