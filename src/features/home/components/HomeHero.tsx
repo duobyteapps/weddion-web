@@ -16,7 +16,7 @@ const actionItems: HomeActionItem[] = [
 
 export function HomeHero() {
   return (
-    <AppContainer className="!max-w-[1200px] py-4">
+    <AppContainer className="!max-w-[1200px] py-14">
       <div className="grid items-stretch gap-10 lg:grid-cols-2">
         <div className="flex flex-col justify-center">
           <AppLogo size="xl" showName className="mb-7" />

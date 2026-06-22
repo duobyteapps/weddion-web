@@ -11,10 +11,11 @@ export function AppButton({
   children,
   variant = "primary",
   className = "",
+  type = "button",
   ...props
 }: AppButtonProps) {
   const baseClass =
-    "btn min-h-0 !h-10 rounded-lg px-4 text-xs font-semibold shadow-none transition-all duration-300 ease-out";
+    "btn min-h-0 h-10 rounded-lg px-4 text-xs font-semibold shadow-none transition-all duration-300 ease-out";
 
   const variantClass =
     variant === "primary"
@@ -24,7 +25,11 @@ export function AppButton({
         : "border border-primaryDark bg-transparent text-primaryDark hover:bg-primarySoft";
 
   return (
-    <button className={`${baseClass} ${variantClass} ${className}`} {...props}>
+    <button
+      type={type}
+      className={`${baseClass} ${variantClass} ${className}`}
+      {...props}
+    >
       {children}
     </button>
   );

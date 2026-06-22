@@ -8,13 +8,15 @@ export function AppInput({ label, className = "", ...props }: AppInputProps) {
   return (
     <label className="form-control w-full">
       {label ? (
-        <div className="label">
-          <span className="label-text text-[#4d3f58]">{label}</span>
+        <div className="label pb-1">
+          <span className="label-text text-sm font-medium text-[#4d3f58]">
+            {label}
+          </span>
         </div>
       ) : null}
 
       <input
-        className={`input input-bordered h-12 rounded-xl border-[#dbc8e9] bg-white/80 text-[#2d2138] focus:border-[#9b62d0] focus:outline-none ${className}`}
+        className={`h-12 w-full rounded-xl border border-solid border-[#D9C7E8] bg-white/90 px-4 text-sm text-[#2d2138] outline-none transition placeholder:text-[#8C879C] focus:border-[#9B62D0] focus:bg-white focus:ring-2 focus:ring-[#9B62D0]/15 ${className}`}
         {...props}
       />
     </label>

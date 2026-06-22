@@ -1,5 +1,6 @@
 import { ChevronDown, Globe2, Menu } from "lucide-react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+
 import { AppButton } from "@/components/ui/AppButton";
 import { AppContainer } from "@/components/ui/AppContainer";
 import { AppLogo } from "@/components/common/AppLogo";
@@ -20,8 +21,10 @@ const navItems = [
 ];
 
 export function Header() {
+  const navigate = useNavigate();
+
   return (
-    <AppContainer className="flex items-center justify-between">
+    <AppContainer className="flex items-center justify-between !my-4">
       <NavLink to="/" className="flex items-center">
         <AppLogo size="md" showName />
       </NavLink>
@@ -39,20 +42,37 @@ export function Header() {
       </nav>
 
       <div className="hidden items-center gap-4 lg:flex">
-        <button className="flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-semibold text-textMuted transition hover:bg-primarySoft hover:text-primaryDark">
+        <button
+          type="button"
+          className="flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-semibold text-textMuted transition hover:bg-primarySoft hover:text-primaryDark"
+        >
           <Globe2 size={18} />
           TR
           <ChevronDown size={16} />
         </button>
 
-        <AppButton variant="outline" className="h-12 min-w-[105px]">
+        <AppButton
+          type="button"
+          variant="outline"
+          className="min-w-[105px]"
+          onClick={() => navigate("/register")}
+        >
           Üye Ol
         </AppButton>
 
-        <AppButton className="h-12 min-w-[120px]">Giriş Yap</AppButton>
+        <AppButton
+          type="button"
+          className="min-w-[120px]"
+          onClick={() => navigate("/login")}
+        >
+          Giriş Yap
+        </AppButton>
       </div>
 
-      <button className="flex h-11 w-11 items-center justify-center rounded-xl border border-borderSoft bg-white/70 text-textDark lg:hidden">
+      <button
+        type="button"
+        className="flex h-11 w-11 items-center justify-center rounded-xl border border-borderSoft bg-white/70 text-textDark lg:hidden"
+      >
         <Menu size={22} />
       </button>
     </AppContainer>

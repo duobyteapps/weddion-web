@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 import logoImage from "@/assets/images/logo.png";
 import logoNameImage from "@/assets/images/logo-name.png";
 
@@ -5,6 +7,7 @@ type AppLogoProps = {
   size?: "sm" | "md" | "lg" | "xl";
   showName?: boolean;
   className?: string;
+  to?: string;
 };
 
 const logoSize = {
@@ -16,12 +19,12 @@ const logoSize = {
   md: {
     image: "h-9 w-9",
     name: "h-9 w-[135px]",
-    gap: "gap-4",
+    gap: "gap-3",
   },
   lg: {
     image: "h-14 w-14",
     name: "h-12 w-[175px]",
-    gap: "gap-5",
+    gap: "gap-3",
   },
   xl: {
     image: "h-24 w-24",
@@ -34,11 +37,15 @@ export function AppLogo({
   size = "md",
   showName = true,
   className = "",
+  to = "/",
 }: AppLogoProps) {
   const currentSize = logoSize[size];
 
   return (
-    <div className={`flex items-center ${currentSize.gap} ${className}`}>
+    <NavLink
+      to={to}
+      className={`flex items-center ${currentSize.gap} ${className}`}
+    >
       <img
         src={logoImage}
         alt="Weddion logo"
@@ -52,6 +59,6 @@ export function AppLogo({
           className={`object-contain ${currentSize.name}`}
         />
       ) : null}
-    </div>
+    </NavLink>
   );
 }

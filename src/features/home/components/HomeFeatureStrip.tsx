@@ -32,7 +32,7 @@ const features: HomeFeatureItem[] = [
 
 export function HomeFeatureStrip() {
   return (
-    <AppContainer>
+    <AppContainer className="pt-4">
       <AppCard className="shadow-cardSoft">
         <AppFeatureItemGrid>
           {features.map((feature) => (
