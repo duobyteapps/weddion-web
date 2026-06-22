@@ -1,8 +1,7 @@
 import type { ReactNode } from "react";
 import type { LucideIcon } from "lucide-react";
 import { ChevronRight } from "lucide-react";
-import { AppCard } from "@/components/ui/AppCard";
-import { AppText } from "@/components/ui/AppText";
+import { AppCard, AppText } from "@/components/ui";
 
 type AppActionCardLayout = "row" | "col";
 

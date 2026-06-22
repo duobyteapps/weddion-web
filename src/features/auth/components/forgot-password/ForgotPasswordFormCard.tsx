@@ -1,9 +1,8 @@
 import { ArrowLeft, Mail } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-import { AppButton } from "@/components/ui/AppButton";
-import { AppCard } from "@/components/ui/AppCard";
-import { AppInput } from "@/components/ui/AppInput";
+import { AppButton, AppInput } from "@/components/ui";
+import { AuthFormCardShell } from "../AuthFormCardShell";
 
 export function ForgotPasswordFormCard() {
   const navigate = useNavigate();
@@ -15,7 +14,7 @@ export function ForgotPasswordFormCard() {
   }
 
   return (
-    <AppCard className="w-full max-w-[750px] px-6 py-8 shadow-card sm:px-8 lg:px-10">
+    <AuthFormCardShell>
       <div className="mb-7 text-center">
         <h2 className="text-2xl font-extrabold text-[#4F3C68]">
           Şifremi Unuttum
@@ -54,6 +53,6 @@ export function ForgotPasswordFormCard() {
         <ArrowLeft size={17} />
         Giriş sayfasına dön
       </button>
-    </AppCard>
+    </AuthFormCardShell>
   );
 }

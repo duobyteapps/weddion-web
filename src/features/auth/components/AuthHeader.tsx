@@ -1,6 +1,5 @@
 import { AppLogo } from "@/components/common/AppLogo";
-import { AppContainer } from "@/components/ui/AppContainer";
-import { AppText } from "@/components/ui/AppText";
+import { AppContainer, AppText } from "@/components/ui";
 
 export function AuthHeader() {
   return (

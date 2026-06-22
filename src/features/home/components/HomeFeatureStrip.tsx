@@ -57,7 +57,7 @@ export function HomeFeatureStrip() {
           Weddion ile davetiyeler artık daha romantik ve modern.
         </AppText>
 
-        <div className="mt-4 flex justify-center">
+        <div className="my-4 flex justify-center">
           <img
             src={purpleHeartDivider}
             alt=""

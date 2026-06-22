@@ -1,29 +1,10 @@
-import lavenderFloralDivider from "@/assets/images/illustration/lavender-floral-divider.png";
-
-import { AppText } from "@/components/ui/AppText";
+import { AuthHero } from "@/features/auth/components/AuthHero";
 
 export function LoginHero() {
   return (
-    <section className="flex-1 items-center justify-center lg:flex">
-      <div className="max-w-xl text-center">
-        <AppText as="h1" variant="serifTitle">
-          Davetlerinizi
-          <br />
-          kolayca yönetin
-        </AppText>
-
-        <img
-          src={lavenderFloralDivider}
-          alt=""
-          aria-hidden="true"
-          className="mx-auto my-3 w-[300px] scale-150 object-contain"
-        />
-
-        <AppText variant="body" className="mx-auto max-w-md text-xl leading-8">
-          Dijital davetiyelerinizi oluşturun, düzenleyin ve sevdiklerinizle şık
-          bir şekilde paylaşın.
-        </AppText>
-      </div>
-    </section>
+    <AuthHero
+      title={"Davetlerinizi\nkolayca yönetin"}
+      description="Dijital davetiyelerinizi oluşturun, düzenleyin ve sevdiklerinizle şık bir şekilde paylaşın."
+    />
   );
 }

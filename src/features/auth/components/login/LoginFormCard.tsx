@@ -1,15 +1,14 @@
 import { Eye, Lock, Mail } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-import { AppButton } from "@/components/ui/AppButton";
-import { AppCard } from "@/components/ui/AppCard";
-import { AppInput } from "@/components/ui/AppInput";
+import { AppButton, AppInput } from "@/components/ui";
+import { AuthFormCardShell } from "@/features/auth/components/AuthFormCardShell";
 
 export function LoginFormCard() {
   const navigate = useNavigate();
 
   return (
-    <AppCard className="w-full max-w-[750px] px-6 py-8 sm:px-8 lg:px-10 shadow-card">
+    <AuthFormCardShell>
       <div className="mb-7 text-center">
         <h2 className="text-2xl font-extrabold text-[#4F3C68]">Giriş Yap</h2>
         <p className="mt-2 text-sm text-[#5E657A]">Hesabınıza giriş yap</p>
@@ -85,6 +84,6 @@ export function LoginFormCard() {
           Kayıt ol
         </button>
       </p>
-    </AppCard>
+    </AuthFormCardShell>
   );
 }
