@@ -56,6 +56,7 @@ export function LoginFormCard() {
           <div className="mt-3 text-right">
             <button
               type="button"
+              onClick={() => navigate("/forgot-password")}
               className="text-xs font-bold text-[#9A5DCE] transition hover:text-[#7E45B4]"
             >
               Şifremi unuttum

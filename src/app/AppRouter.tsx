@@ -4,6 +4,7 @@ import { MainLayout } from "@/components/layout/MainLayout";
 import { HomePage } from "@/features/home/pages/HomePage";
 import { LoginPage } from "@/features/auth/pages/LoginPage";
 import { RegisterPage } from "@/features/auth/pages/RegisterPage";
+import { ForgotPasswordPage } from "@/features/auth/pages/ForgotPasswordPage";
 
 export const AppRouter = () => {
   return (
@@ -11,6 +12,7 @@ export const AppRouter = () => {
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
 
         <Route element={<MainLayout />}>
           <Route path="/" element={<HomePage />} />
