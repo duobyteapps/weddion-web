@@ -13,6 +13,7 @@
 @import "@fontsource/tangerine/700.css";
 
 @import "tailwindcss";
+@plugin "daisyui";
 
 @theme {
   --font-manrope: "Manrope", sans-serif;
