@@ -1,80 +1,166 @@
-import { Bell, Menu, Plus, Search } from "lucide-react";
+import { Bell, ChartNoAxesGantt, ChevronDown, Menu } from "lucide-react";
 
-import { AppButton, AppText } from "@/components/ui";
+import {
+  AppDropdown,
+  AppDropdownItem,
+  AppSearchInput,
+  AppText,
+} from "@/components/ui";
 
 type AdminHeaderProps = {
   drawerId: string;
+  isSidebarCollapsed: boolean;
+  onToggleSidebar: () => void;
 };
 
-export function AdminHeader({ drawerId }: AdminHeaderProps) {
+export function AdminHeader({
+  drawerId,
+  isSidebarCollapsed,
+  onToggleSidebar,
+}: AdminHeaderProps) {
   return (
-    <nav className="navbar sticky top-0 z-30 min-h-20 border-b border-base-300 bg-base-100/90 px-4 backdrop-blur sm:px-6 lg:px-8">
-      <div className="navbar-start gap-3">
-        <label
-          htmlFor={drawerId}
-          aria-label="Admin menüsünü aç"
-          className="btn btn-square btn-ghost"
-        >
-          <Menu size={22} />
-        </label>
+    <header className="sticky top-0 z-30 border-b border-borderSoft bg-surface/95 shadow-cardSoft backdrop-blur">
+      <div className="flex h-16 items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+        <div className="flex min-w-0 items-center gap-3">
+          <label
+            htmlFor={drawerId}
+            aria-label="Admin menüsünü aç"
+            className="btn btn-square btn-ghost border border-borderSoft bg-surfaceSoft text-textDark lg:hidden"
+          >
+            <Menu size={21} />
+          </label>
 
-        <div>
-          <AppText variant="captionStrong">Admin Panel</AppText>
-          <AppText variant="caption" className="mt-1 hidden sm:block">
-            Weddion yönetim merkezi
-          </AppText>
-        </div>
-      </div>
-
-      <div className="navbar-center hidden w-full max-w-xl lg:flex">
-        <label className="input input-bordered flex w-full items-center gap-3 rounded-2xl bg-base-200">
-          <Search size={18} className="text-textMuted" />
-
-          <input
-            type="text"
-            className="grow text-sm"
-            placeholder="Kullanıcı, davetiye veya şablon ara..."
-          />
-        </label>
-      </div>
-
-      <div className="navbar-end gap-2">
-        <button type="button" className="btn btn-square btn-ghost">
-          <Bell size={20} />
-        </button>
-
-        <AppButton className="hidden sm:inline-flex">
-          <Plus size={16} />
-          Yeni Şablon
-        </AppButton>
-
-        <div className="dropdown dropdown-end">
-          <button type="button" tabIndex={0} className="avatar btn btn-circle">
-            <div className="flex w-10 items-center justify-center rounded-full bg-primarySoft text-sm font-bold text-primaryDark">
-              OA
-            </div>
+          <button
+            type="button"
+            onClick={onToggleSidebar}
+            aria-label={
+              isSidebarCollapsed ? "Sidebarı genişlet" : "Sidebarı daralt"
+            }
+            className="hidden h-10 w-10 items-center justify-center rounded-2xl bg-surfaceSoft text-primaryDark shadow-cardSoft transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primarySoft lg:flex"
+          >
+            <ChartNoAxesGantt
+              size={20}
+              strokeWidth={2.35}
+              className={[
+                "transition-transform duration-300",
+                isSidebarCollapsed ? "rotate-180" : "rotate-0",
+              ].join(" ")}
+            />
           </button>
 
-          <ul
-            tabIndex={0}
-            className="menu dropdown-content z-[1] mt-3 w-52 rounded-box bg-base-100 p-2 shadow-xl"
-          >
-            <li>
-              <button type="button">Profil</button>
-            </li>
+          <div className="min-w-0">
+            <AppText
+              variant="caption"
+              as="h1"
+              className="truncate !text-lg text-textDark !sm:text-xl"
+            >
+              Weddion Admin Dashboard
+            </AppText>
+          </div>
+        </div>
 
-            <li>
-              <button type="button">Ayarlar</button>
-            </li>
+        <div className="hidden w-full max-w-sm xl:block">
+          <AppSearchInput
+            aria-label="Admin arama"
+            placeholder="Ara..."
+            containerClassName="w-full"
+          />
+        </div>
 
-            <li>
-              <button type="button" className="text-error">
-                Çıkış Yap
+        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+          <AppDropdown
+            trigger={
+              <button
+                type="button"
+                className="relative flex h-10 w-10 items-center justify-center rounded-2xl bg-transparent text-primaryDark transition hover:bg-primarySoft focus:outline-none focus-visible:ring-2 focus-visible:ring-primarySoft"
+                aria-label="Bildirimler"
+              >
+                <Bell size={20} />
+
+                <span className="absolute right-1 top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-primaryDark px-1 text-[10px] font-bold text-white shadow-cardSoft">
+                  0
+                </span>
               </button>
-            </li>
-          </ul>
+            }
+            contentClassName="w-80"
+          >
+            <div className="px-2 py-2">
+              <AppText variant="captionStrong" className="text-textDark">
+                Bildirimler
+              </AppText>
+
+              <AppText variant="caption" className="mt-1">
+                Henüz yeni bildirimin yok.
+              </AppText>
+            </div>
+
+            <div className="my-2 h-px bg-borderSoft" />
+
+            <AppDropdownItem>Tüm bildirimleri görüntüle</AppDropdownItem>
+          </AppDropdown>
+
+          <AppDropdown
+            trigger={
+              <button
+                type="button"
+                className="hidden items-center gap-3 rounded-2xl bg-transparent px-2 py-1 transition hover:bg-primarySoft focus:outline-none focus-visible:ring-2 focus-visible:ring-primarySoft md:flex"
+                aria-label="Admin profil menüsü"
+              >
+                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primarySoft text-sm font-bold text-primaryDark">
+                  OA
+                </div>
+
+                <div className="text-left leading-none">
+                  <AppText variant="captionStrong" className="text-textDark">
+                    Yönetici
+                  </AppText>
+
+                  <AppText variant="caption" className="text-primaryDark">
+                    Süper Admin
+                  </AppText>
+                </div>
+
+                <ChevronDown size={16} className="text-primaryDark" />
+              </button>
+            }
+            contentClassName="w-56"
+          >
+            <div className="space-y-1">
+              <AppDropdownItem>Profil</AppDropdownItem>
+              <AppDropdownItem>Ayarlar</AppDropdownItem>
+              <AppDropdownItem variant="danger">Çıkış Yap</AppDropdownItem>
+            </div>
+          </AppDropdown>
+
+          <AppDropdown
+            className="md:hidden"
+            trigger={
+              <button
+                type="button"
+                className="flex h-10 w-10 items-center justify-center rounded-2xl bg-primarySoft text-sm font-bold text-primaryDark transition hover:bg-primaryLight focus:outline-none focus-visible:ring-2 focus-visible:ring-primarySoft"
+                aria-label="Mobil admin profil menüsü"
+              >
+                OA
+              </button>
+            }
+            contentClassName="w-56"
+          >
+            <div className="space-y-1">
+              <AppDropdownItem>Profil</AppDropdownItem>
+              <AppDropdownItem>Ayarlar</AppDropdownItem>
+              <AppDropdownItem variant="danger">Çıkış Yap</AppDropdownItem>
+            </div>
+          </AppDropdown>
         </div>
       </div>
-    </nav>
+
+      <div className="border-t border-borderSoft px-4 py-3 sm:px-6 xl:hidden">
+        <AppSearchInput
+          aria-label="Mobil admin arama"
+          placeholder="Ara..."
+          containerClassName="w-full"
+        />
+      </div>
+    </header>
   );
 }

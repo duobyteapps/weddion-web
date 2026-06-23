@@ -5,51 +5,73 @@ import { AppLogo } from "@/components/common/AppLogo";
 import { AppText } from "@/components/ui";
 import { adminNavigationItems } from "./adminNavigation";
 
-export function AdminSidebar() {
-  return (
-    <aside className="flex min-h-full flex-col items-start border-r border-base-300 bg-base-100 transition-all duration-300 is-drawer-close:w-16 is-drawer-open:w-72">
-      <div className="flex h-20 w-full items-center border-b border-base-300 px-4">
-        <div className="is-drawer-close:hidden">
-          <AppLogo />
-        </div>
+type AdminSidebarProps = {
+  isCollapsed: boolean;
+};
 
-        <div className="hidden h-10 w-10 items-center justify-center rounded-2xl bg-primary text-lg font-bold text-primary-content is-drawer-close:flex">
-          W
-        </div>
+export function AdminSidebar({ isCollapsed }: AdminSidebarProps) {
+  return (
+    <aside
+      className={[
+        "flex min-h-full flex-col overflow-x-hidden border-r border-borderSoft bg-primarySoft shadow-cardSoft transition-all duration-300",
+        isCollapsed ? "w-20" : "w-72",
+      ].join(" ")}
+    >
+      <div
+        className={[
+          "flex h-16 shrink-0 items-center border-b border-borderSoft",
+          isCollapsed ? "justify-center px-0" : "px-6",
+        ].join(" ")}
+      >
+        <AppLogo
+          size="sm"
+          showName={!isCollapsed}
+          to="/admin"
+          className={[
+            "flex items-center",
+            isCollapsed ? "justify-center" : "",
+          ].join(" ")}
+        />
       </div>
 
-      <div className="w-full flex-1 overflow-y-auto px-3 py-5">
-        <AppText
-          variant="captionStrong"
-          className="mb-3 px-3 uppercase is-drawer-close:hidden"
-        >
-          Yönetim
-        </AppText>
+      <div className="flex-1 overflow-y-auto overflow-x-hidden px-3 py-4">
+        {!isCollapsed ? (
+          <AppText
+            variant="captionStrong"
+            className="mb-2 px-3 uppercase tracking-[0.16em] text-primaryDark"
+          >
+            Yönetim
+          </AppText>
+        ) : null}
 
-        <ul className="menu w-full gap-1 p-0">
+        <ul className="menu w-full gap-1 overflow-x-hidden p-0">
           {adminNavigationItems.map((item) => {
             const Icon = item.icon;
 
             return (
-              <li key={item.href}>
+              <li key={item.href} className="w-full overflow-x-hidden">
                 <NavLink
                   to={item.href}
                   end={item.end}
                   data-tip={item.label}
                   className={({ isActive }) =>
                     [
-                      "is-drawer-close:tooltip is-drawer-close:tooltip-right",
-                      "rounded-xl px-3 py-3 text-sm font-semibold transition-all duration-200",
-                      "hover:bg-primarySoft hover:text-primaryDark",
+                      "flex min-w-0 w-full items-center rounded-xl text-sm font-semibold transition-all duration-200",
+                      isCollapsed
+                        ? "tooltip tooltip-right justify-center px-0 py-2.5"
+                        : "gap-3 px-3 py-2.5",
+                      "hover:bg-primaryDark hover:text-white",
                       isActive
-                        ? "bg-primarySoft text-primaryDark"
-                        : "text-textMuted",
+                        ? "bg-primaryDark text-white shadow-cardSoft"
+                        : "text-primaryDark/75",
                     ].join(" ")
                   }
                 >
-                  <Icon size={19} className="shrink-0" />
+                  <Icon size={18} className="shrink-0" />
 
-                  <span className="is-drawer-close:hidden">{item.label}</span>
+                  {!isCollapsed ? (
+                    <span className="min-w-0 truncate">{item.label}</span>
+                  ) : null}
                 </NavLink>
               </li>
             );
@@ -57,20 +79,26 @@ export function AdminSidebar() {
         </ul>
       </div>
 
-      <div className="w-full border-t border-base-300 p-3">
-        <div className="rounded-2xl bg-primarySoft p-4 is-drawer-close:bg-transparent is-drawer-close:p-0">
-          <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-white text-primaryDark is-drawer-close:mx-auto is-drawer-close:mb-0">
-            <Crown size={20} />
+      <div className="shrink-0 overflow-x-hidden border-t border-borderSoft p-3">
+        {isCollapsed ? (
+          <div className="flex justify-center">
+            <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-backgroundSoft text-primaryDark shadow-cardSoft">
+              <Crown size={19} />
+            </div>
           </div>
+        ) : (
+          <div className="rounded-2xl border border-borderSoft bg-backgroundSoft p-3">
+            <div className="mb-2 flex h-9 w-9 items-center justify-center rounded-xl bg-primarySoft text-primaryDark">
+              <Crown size={19} />
+            </div>
 
-          <div className="is-drawer-close:hidden">
             <AppText variant="captionStrong">Weddion Admin</AppText>
 
             <AppText variant="caption" className="mt-1 leading-5">
-              Kullanıcıları, davetiyeleri ve medya alanını buradan yönet.
+              Kullanıcıları, davetiyeleri, şablonları ve medya alanını yönet.
             </AppText>
           </div>
-        </div>
+        )}
       </div>
     </aside>
   );

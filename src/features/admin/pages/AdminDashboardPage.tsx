@@ -10,7 +10,7 @@ import {
   Users,
 } from "lucide-react";
 
-import { AppCard, AppText } from "@/components/ui";
+import { AppButton, AppCard, AppText } from "@/components/ui";
 
 const stats = [
   {
@@ -96,15 +96,22 @@ const systemStatus = [
 export function AdminDashboardPage() {
   return (
     <div className="space-y-6">
-      <section className="hero overflow-hidden rounded-3xl bg-gradient-to-r from-primarySoft via-base-100 to-base-100 shadow-sm">
-        <div className="hero-content w-full justify-between px-6 py-8 lg:px-8">
+      <section className="overflow-hidden rounded-[2rem] border border-borderSoft bg-gradient-to-r from-primarySoft via-surface to-surfaceLight p-6 shadow-card sm:p-8">
+        <div className="flex flex-col gap-6 xl:flex-row xl:items-end xl:justify-between">
           <div>
-            <div className="badge badge-primary badge-outline mb-4 gap-2 rounded-full px-4 py-3">
-              <ShieldCheck size={15} />
-              Admin Dashboard
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-surface/70 px-4 py-2 text-primaryDark">
+              <ShieldCheck size={16} />
+
+              <AppText variant="captionStrong" className="text-primaryDark">
+                Admin Dashboard
+              </AppText>
             </div>
 
-            <AppText variant="title" as="h1" className="text-3xl lg:text-4xl">
+            <AppText
+              variant="title"
+              as="h1"
+              className="text-3xl text-textDark sm:text-4xl"
+            >
               Weddion Yönetim Paneli
             </AppText>
 
@@ -114,14 +121,20 @@ export function AdminDashboardPage() {
             </AppText>
           </div>
 
-          <div className="hidden rounded-3xl bg-white/70 p-5 shadow-sm lg:block">
-            <div className="stats bg-transparent">
-              <div className="stat px-4 py-2">
-                <div className="stat-title text-xs">Bugünkü Aktivite</div>
-                <div className="stat-value text-primaryDark">324</div>
-                <div className="stat-desc">son 24 saat</div>
-              </div>
-            </div>
+          <div className="rounded-3xl border border-borderSoft bg-surface/80 p-5 shadow-cardSoft">
+            <AppText variant="caption">Bugünkü Aktivite</AppText>
+
+            <AppText
+              variant="title"
+              as="strong"
+              className="mt-2 block text-3xl text-primaryDark"
+            >
+              324
+            </AppText>
+
+            <AppText variant="caption" className="mt-1">
+              son 24 saat
+            </AppText>
           </div>
         </div>
       </section>
@@ -133,7 +146,7 @@ export function AdminDashboardPage() {
           return (
             <AppCard
               key={stat.label}
-              className="border border-base-300 bg-base-100 p-5 shadow-sm"
+              className="border border-borderSoft bg-surface p-5 shadow-cardSoft"
             >
               <div className="flex items-start justify-between gap-4">
                 <div>
@@ -142,7 +155,7 @@ export function AdminDashboardPage() {
                   <AppText
                     variant="title"
                     as="strong"
-                    className="mt-2 block text-3xl"
+                    className="mt-2 block text-3xl text-textDark"
                   >
                     {stat.value}
                   </AppText>
@@ -154,10 +167,10 @@ export function AdminDashboardPage() {
               </div>
 
               <div className="mt-5 flex items-center gap-2">
-                <div className="badge badge-success badge-outline gap-1">
+                <span className="inline-flex items-center gap-1 rounded-full border border-primary/20 bg-primarySoft px-2.5 py-1 text-xs font-bold text-primaryDark">
                   <TrendingUp size={13} />
                   {stat.change}
-                </div>
+                </span>
 
                 <AppText variant="caption">son 30 gün</AppText>
               </div>
@@ -167,7 +180,7 @@ export function AdminDashboardPage() {
       </section>
 
       <section className="grid gap-6 xl:grid-cols-[1.15fr_0.85fr]">
-        <AppCard className="border border-base-300 bg-base-100 p-6 shadow-sm">
+        <AppCard className="border border-borderSoft bg-surface p-6 shadow-cardSoft">
           <div className="mb-6 flex items-center justify-between gap-4">
             <div>
               <AppText variant="subtitle" as="h2">
@@ -179,18 +192,20 @@ export function AdminDashboardPage() {
               </AppText>
             </div>
 
-            <Activity className="text-primaryDark" size={22} />
+            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-primarySoft text-primaryDark">
+              <Activity size={21} />
+            </div>
           </div>
 
-          <div className="grid h-72 items-end gap-3 rounded-3xl border border-base-300 bg-base-200 p-5 sm:grid-cols-12">
+          <div className="grid h-72 items-end gap-3 rounded-3xl border border-borderSoft bg-backgroundSoft p-5 sm:grid-cols-12">
             {[48, 62, 54, 73, 66, 82, 77, 91, 86, 96, 88, 104].map(
               (height, index) => (
                 <div
                   key={index}
-                  className="flex h-full items-end rounded-full bg-base-100 p-1"
+                  className="flex h-full items-end rounded-full bg-surface p-1"
                 >
                   <div
-                    className="w-full rounded-full bg-primary"
+                    className="w-full rounded-full bg-gradient-to-t from-primaryDark to-primary"
                     style={{ height: `${height}%` }}
                   />
                 </div>
@@ -199,7 +214,7 @@ export function AdminDashboardPage() {
           </div>
         </AppCard>
 
-        <AppCard className="border border-base-300 bg-base-100 p-6 shadow-sm">
+        <AppCard className="border border-borderSoft bg-surface p-6 shadow-cardSoft">
           <div className="mb-6 flex items-center justify-between gap-4">
             <div>
               <AppText variant="subtitle" as="h2">
@@ -211,57 +226,38 @@ export function AdminDashboardPage() {
               </AppText>
             </div>
 
-            <HardDrive className="text-primaryDark" size={22} />
+            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-primarySoft text-primaryDark">
+              <HardDrive size={21} />
+            </div>
           </div>
 
-          <div className="radial-progress mx-auto flex text-primaryDark [--size:12rem] [--thickness:1rem]">
-            64%
+          <div className="mx-auto flex h-48 w-48 items-center justify-center rounded-full border-[18px] border-primarySoft">
+            <div className="text-center">
+              <AppText
+                variant="title"
+                as="strong"
+                className="block text-4xl text-primaryDark"
+              >
+                64%
+              </AppText>
+
+              <AppText variant="caption">kullanıldı</AppText>
+            </div>
           </div>
 
-          <div className="mt-7 space-y-3">
-            <div>
-              <div className="mb-2 flex justify-between text-xs font-semibold">
-                <span>Misafir fotoğrafları</span>
-                <span>46%</span>
-              </div>
-              <progress
-                className="progress progress-primary w-full"
-                value="46"
-                max="100"
-              />
-            </div>
-
-            <div>
-              <div className="mb-2 flex justify-between text-xs font-semibold">
-                <span>Davetiye görselleri</span>
-                <span>38%</span>
-              </div>
-              <progress
-                className="progress progress-secondary w-full"
-                value="38"
-                max="100"
-              />
-            </div>
-
-            <div>
-              <div className="mb-2 flex justify-between text-xs font-semibold">
-                <span>Kapak görselleri</span>
-                <span>16%</span>
-              </div>
-              <progress
-                className="progress progress-accent w-full"
-                value="16"
-                max="100"
-              />
-            </div>
+          <div className="mt-7 space-y-4">
+            <StorageProgress label="Misafir fotoğrafları" value={46} />
+            <StorageProgress label="Davetiye görselleri" value={38} />
+            <StorageProgress label="Kapak görselleri" value={16} />
           </div>
         </AppCard>
       </section>
 
       <section className="grid gap-6 xl:grid-cols-3">
-        <AppCard className="border border-base-300 bg-base-100 p-6 shadow-sm">
+        <AppCard className="border border-borderSoft bg-surface p-6 shadow-cardSoft">
           <div className="mb-5 flex items-center gap-3">
             <Users size={21} className="text-primaryDark" />
+
             <AppText variant="subtitle" as="h2">
               Son Kullanıcılar
             </AppText>
@@ -271,19 +267,20 @@ export function AdminDashboardPage() {
             {recentUsers.map((user) => (
               <div
                 key={user.email}
-                className="rounded-2xl border border-base-300 bg-base-100 px-4 py-3"
+                className="rounded-2xl border border-borderSoft bg-backgroundSoft px-4 py-3"
               >
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <AppText variant="captionStrong">{user.name}</AppText>
+
                     <AppText variant="caption" className="mt-1">
                       {user.email}
                     </AppText>
                   </div>
 
-                  <div className="badge badge-primary badge-outline">
+                  <span className="rounded-full bg-primarySoft px-2.5 py-1 text-xs font-bold text-primaryDark">
                     {user.plan}
-                  </div>
+                  </span>
                 </div>
 
                 <AppText variant="caption" className="mt-3">
@@ -294,9 +291,10 @@ export function AdminDashboardPage() {
           </div>
         </AppCard>
 
-        <AppCard className="border border-base-300 bg-base-100 p-6 shadow-sm">
+        <AppCard className="border border-borderSoft bg-surface p-6 shadow-cardSoft">
           <div className="mb-5 flex items-center gap-3">
             <Sparkles size={21} className="text-primaryDark" />
+
             <AppText variant="subtitle" as="h2">
               Popüler Şablonlar
             </AppText>
@@ -308,6 +306,7 @@ export function AdminDashboardPage() {
                 <div className="mb-2 flex items-center justify-between gap-3">
                   <div>
                     <AppText variant="captionStrong">{template.name}</AppText>
+
                     <AppText variant="caption" className="mt-1">
                       {template.category}
                     </AppText>
@@ -318,19 +317,21 @@ export function AdminDashboardPage() {
                   </AppText>
                 </div>
 
-                <progress
-                  className="progress progress-primary w-full"
-                  value={template.usage}
-                  max="100"
-                />
+                <div className="h-2 overflow-hidden rounded-full bg-primarySoft">
+                  <div
+                    className="h-full rounded-full bg-primaryDark"
+                    style={{ width: `${template.usage}%` }}
+                  />
+                </div>
               </div>
             ))}
           </div>
         </AppCard>
 
-        <AppCard className="border border-base-300 bg-base-100 p-6 shadow-sm">
+        <AppCard className="border border-borderSoft bg-surface p-6 shadow-cardSoft">
           <div className="mb-5 flex items-center gap-3">
             <ShieldCheck size={21} className="text-primaryDark" />
+
             <AppText variant="subtitle" as="h2">
               Sistem Durumu
             </AppText>
@@ -340,17 +341,45 @@ export function AdminDashboardPage() {
             {systemStatus.map((item) => (
               <div
                 key={item.label}
-                className="flex items-center justify-between rounded-2xl bg-base-200 px-4 py-3"
+                className="flex items-center justify-between rounded-2xl border border-borderSoft bg-backgroundSoft px-4 py-3"
               >
                 <AppText variant="captionStrong">{item.label}</AppText>
-                <div className="badge badge-success badge-outline">
+
+                <span className="rounded-full bg-primarySoft px-2.5 py-1 text-xs font-bold text-primaryDark">
                   {item.value}
-                </div>
+                </span>
               </div>
             ))}
           </div>
+
+          <AppButton variant="outline" className="mt-5 w-full">
+            Sistem detaylarını gör
+          </AppButton>
         </AppCard>
       </section>
+    </div>
+  );
+}
+
+type StorageProgressProps = {
+  label: string;
+  value: number;
+};
+
+function StorageProgress({ label, value }: StorageProgressProps) {
+  return (
+    <div>
+      <div className="mb-2 flex justify-between text-xs font-semibold text-textDark">
+        <span>{label}</span>
+        <span>{value}%</span>
+      </div>
+
+      <div className="h-2 overflow-hidden rounded-full bg-primarySoft">
+        <div
+          className="h-full rounded-full bg-primaryDark"
+          style={{ width: `${value}%` }}
+        />
+      </div>
     </div>
   );
 }
