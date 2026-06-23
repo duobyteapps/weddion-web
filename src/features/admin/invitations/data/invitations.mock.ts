@@ -5,6 +5,7 @@ export const adminInvitationsMock: AdminInvitation[] = [
     id: "1",
     name: "Lavanta Bahçesi",
     category: "Çiçekli",
+    categoryValue: "flower",
     imageUrl:
       "https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=240&q=80",
     isPremium: true,
@@ -14,6 +15,7 @@ export const adminInvitationsMock: AdminInvitation[] = [
     id: "2",
     name: "Romantica",
     category: "Çiçekli",
+    categoryValue: "flower",
     imageUrl:
       "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=240&q=80",
     isPremium: true,
@@ -23,6 +25,7 @@ export const adminInvitationsMock: AdminInvitation[] = [
     id: "3",
     name: "Eterna",
     category: "Minimal",
+    categoryValue: "minimal",
     imageUrl:
       "https://images.unsplash.com/photo-1509610973147-232dfea52a97?auto=format&fit=crop&w=240&q=80",
     isPremium: false,
@@ -32,6 +35,7 @@ export const adminInvitationsMock: AdminInvitation[] = [
     id: "4",
     name: "Botanik Yeşil",
     category: "Doğa",
+    categoryValue: "nature",
     imageUrl:
       "https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?auto=format&fit=crop&w=240&q=80",
     isPremium: false,
@@ -41,6 +45,7 @@ export const adminInvitationsMock: AdminInvitation[] = [
     id: "5",
     name: "Klasik Altın Çerçeve",
     category: "Klasik",
+    categoryValue: "classic",
     imageUrl:
       "https://images.unsplash.com/photo-1469371670807-013ccf25f16a?auto=format&fit=crop&w=240&q=80",
     isPremium: true,
