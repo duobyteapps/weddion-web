@@ -13,7 +13,7 @@ export function AdminSidebar({ isCollapsed }: AdminSidebarProps) {
   return (
     <aside
       className={[
-        "flex min-h-full flex-col overflow-x-hidden border-r border-borderSoft bg-primarySoft shadow-cardSoft transition-all duration-300",
+        "flex min-h-full flex-col overflow-x-hidden border-r border-borderSoft bg-primarySoft/35 shadow-cardSoft transition-all duration-300",
         isCollapsed ? "w-20" : "w-72",
       ].join(" ")}
     >
