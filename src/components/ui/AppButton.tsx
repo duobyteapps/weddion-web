@@ -15,14 +15,14 @@ export function AppButton({
   ...props
 }: AppButtonProps) {
   const baseClass =
-    "btn min-h-0 h-10 rounded-lg px-4 text-xs font-semibold shadow-none transition-all duration-300 ease-out";
+    "btn min-h-0 h-11 rounded-xl px-5 text-sm font-bold shadow-none transition-none disabled:cursor-not-allowed disabled:opacity-60";
 
   const variantClass =
     variant === "primary"
-      ? "border-none bg-gradient-to-r from-primary to-primaryDark text-white"
+      ? "border-none bg-gradient-to-r from-[#9A5DCE] via-[#8F5EC2] to-[#6F3FA3] text-white shadow-[0_14px_30px_rgba(143,94,194,0.28)]"
       : variant === "outline"
-        ? "border border-primaryDark/50 bg-white/50 text-textDark hover:border-primaryDark hover:bg-primarySoft"
-        : "border border-primaryDark bg-transparent text-primaryDark hover:bg-primarySoft";
+        ? "border border-[#D8C8E8] bg-white/80 text-[#4F3C68]"
+        : "border border-transparent bg-transparent text-[#7E45B4]";
 
   return (
     <button

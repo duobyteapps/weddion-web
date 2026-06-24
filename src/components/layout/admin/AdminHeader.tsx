@@ -1,4 +1,11 @@
-import { Bell, ChartNoAxesGantt, ChevronDown, Menu } from "lucide-react";
+import {
+  Bell,
+  ChartNoAxesGantt,
+  ChevronDown,
+  LogOut,
+  Menu,
+} from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 import {
   AppDropdown,
@@ -6,6 +13,7 @@ import {
   AppSearchInput,
   AppText,
 } from "@/components/ui";
+import { logoutUser } from "@/features/auth/services/authService";
 
 type AdminHeaderProps = {
   drawerId: string;
@@ -18,6 +26,13 @@ export function AdminHeader({
   isSidebarCollapsed,
   onToggleSidebar,
 }: AdminHeaderProps) {
+  const navigate = useNavigate();
+
+  async function handleLogout() {
+    await logoutUser();
+    navigate("/login", { replace: true });
+  }
+
   return (
     <header className="sticky top-0 z-30 border-b border-borderSoft bg-surface/95 shadow-cardSoft backdrop-blur">
       <div className="flex h-16 items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
@@ -128,7 +143,13 @@ export function AdminHeader({
             <div className="space-y-1">
               <AppDropdownItem>Profil</AppDropdownItem>
               <AppDropdownItem>Ayarlar</AppDropdownItem>
-              <AppDropdownItem variant="danger">Çıkış Yap</AppDropdownItem>
+
+              <AppDropdownItem variant="danger" onClick={handleLogout}>
+                <span className="flex items-center gap-2">
+                  <LogOut size={16} />
+                  Çıkış Yap
+                </span>
+              </AppDropdownItem>
             </div>
           </AppDropdown>
 
@@ -148,7 +169,13 @@ export function AdminHeader({
             <div className="space-y-1">
               <AppDropdownItem>Profil</AppDropdownItem>
               <AppDropdownItem>Ayarlar</AppDropdownItem>
-              <AppDropdownItem variant="danger">Çıkış Yap</AppDropdownItem>
+
+              <AppDropdownItem variant="danger" onClick={handleLogout}>
+                <span className="flex items-center gap-2">
+                  <LogOut size={16} />
+                  Çıkış Yap
+                </span>
+              </AppDropdownItem>
             </div>
           </AppDropdown>
         </div>
