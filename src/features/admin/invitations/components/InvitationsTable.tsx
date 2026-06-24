@@ -48,12 +48,18 @@ export function InvitationsTable({ invitations }: InvitationsTableProps) {
               >
                 <td>
                   <div className="avatar">
-                    <div className="h-16 w-24 rounded-2xl border border-borderSoft bg-primarySoft">
-                      <img
-                        src={invitation.imageUrl}
-                        alt={invitation.name}
-                        className="object-cover"
-                      />
+                    <div className="h-20 w-20 overflow-hidden rounded-2xl border border-borderSoft bg-primarySoft">
+                      {invitation.imageUrl ? (
+                        <img
+                          src={invitation.imageUrl}
+                          alt={invitation.name}
+                          className="h-full w-full object-cover"
+                        />
+                      ) : (
+                        <div className="flex h-full w-full items-center justify-center">
+                          <ImageIcon size={20} className="text-primaryDark" />
+                        </div>
+                      )}
                     </div>
                   </div>
                 </td>
@@ -112,6 +118,16 @@ export function InvitationsTable({ invitations }: InvitationsTableProps) {
                 </td>
               </tr>
             ))}
+
+            {invitations.length === 0 ? (
+              <tr>
+                <td colSpan={6}>
+                  <div className="py-8 text-center text-sm text-textMuted">
+                    Gösterilecek davetiye bulunamadı.
+                  </div>
+                </td>
+              </tr>
+            ) : null}
           </tbody>
         </table>
       </div>

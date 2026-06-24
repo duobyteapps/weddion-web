@@ -12,43 +12,43 @@ import {
 export const adminNavigationItems = [
   {
     label: "Dashboard",
-    href: "/admin",
+    href: "/dashboard",
     icon: LayoutDashboard,
     end: true,
   },
   {
     label: "Kullanıcılar",
-    href: "/admin/users",
+    href: "/dashboard/users",
     icon: Users,
   },
   {
     label: "Davetiyeler",
-    href: "/admin/invitations",
+    href: "/dashboard/invitations",
     icon: GalleryHorizontal,
   },
   {
     label: "Şablonlar",
-    href: "/admin/templates",
+    href: "/dashboard/templates",
     icon: Sparkles,
   },
   {
     label: "Fotoğraflar",
-    href: "/admin/photos",
+    href: "/dashboard/photos",
     icon: FileImage,
   },
   {
     label: "Depolama",
-    href: "/admin/storage",
+    href: "/dashboard/storage",
     icon: HardDrive,
   },
   {
     label: "Bildirimler",
-    href: "/admin/notifications",
+    href: "/dashboard/notifications",
     icon: Bell,
   },
   {
     label: "Ayarlar",
-    href: "/admin/settings",
+    href: "/dashboard/settings",
     icon: Settings,
   },
 ];
